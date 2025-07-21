@@ -35,6 +35,7 @@
         </dependency>
     </dependencies>
 
+         
     <build>
         <plugins>
             <!-- Surefire plugin to enable test execution and reports -->
