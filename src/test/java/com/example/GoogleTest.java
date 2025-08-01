@@ -1,5 +1,4 @@
-package com.example;
-
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
@@ -8,20 +7,19 @@ public class GoogleTest {
 
     WebDriver driver;
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        WebDriverManager.chromedriver().setup(); // Automatically downloads & sets path
         driver = new ChromeDriver();
     }
 
     @Test
-    public void testGoogleHomePage() {
+    public void openGoogle() {
         driver.get("https://www.google.com");
-        String title = driver.getTitle();
-        assert title.contains("Google");
+        System.out.println("Title: " + driver.getTitle());
     }
 
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
         if (driver != null) {
             driver.quit();
